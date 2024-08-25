@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.11.9 on darwin)" generated="20240813 17:54:23.262" rpa="false" schemaversion="3">
+<suite id="s1" name="Functionality Test" source="/Users/deer/polygon-robot-test/testcases/functionality_test">
+<suite id="s1-s1" name="007 APMC Receive - Sorting" source="/Users/deer/polygon-robot-test/testcases/functionality_test/007 APMC Receive - Sorting">
+<suite id="s1-s1-s1" name="001 Apmc Receive With Plan And Sorting" source="/Users/deer/polygon-robot-test/testcases/functionality_test/007 APMC Receive - Sorting/001_apmc_receive_with_plan_and_sorting">
+<suite id="s1-s1-s1-s1" name="01 Apmc Receive By Interface [Dlv And Rcv Mode]" source="/Users/deer/polygon-robot-test/testcases/functionality_test/007 APMC Receive - Sorting/001_apmc_receive_with_plan_and_sorting/01_apmc_receive_by_interface_[dlv_and_rcv_mode].robot">
+<test id="s1-s1-s1-s1-t1" name="Test API" line="5">
+<kw name="Shipping Information Maintenance Add API" library="common_api">
+<doc>This test case sends a POST request to the specified API.</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${random_suffix}</var>
+<arg>''.join(random.choices(string.ascii_uppercase, k=5))</arg>
+<arg>modules=random,string</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240813 17:54:23.637" level="INFO">${random_suffix} = RYSGO</msg>
+<status status="PASS" starttime="20240813 17:54:23.637" endtime="20240813 17:54:23.637"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${vessel_name}</var>
+<arg>AUTOMATETESTD${random_suffix}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240813 17:54:23.637" level="INFO">${vessel_name} = AUTOMATETESTDRYSGO</msg>
+<status status="PASS" starttime="20240813 17:54:23.637" endtime="20240813 17:54:23.637"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${current_date}</var>
+<arg>2024-03-06</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">${current_date} = 2024-03-06</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${api_url}</var>
+<arg>https://pgn-api-dev.toyota.co.th/web-api-invoice/shipping-information-maintenance/insert-header</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">${api_url} = https://pgn-api-dev.toyota.co.th/web-api-invoice/shipping-information-maintenance/insert-header</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${headers}</var>
+<arg>accept=application/json, text/plain, */*</arg>
+<arg>accept-language=th-TH,th;q=0.9,en;q=0.8</arg>
+<arg>content-type=application/json</arg>
+<arg>origin=https://pgn-dev.toyota.co.th</arg>
+<arg>referer=https://pgn-dev.toyota.co.th/</arg>
+<arg>user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">${headers} = {'accept': 'application/json, text/plain, */*', 'accept-language': 'th-TH,th;q=0.9,en;q=0.8', 'content-type': 'application/json', 'origin': 'https://pgn-dev.toyota.co.th', 'referer': 'https://pgn-dev....</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${data}</var>
+<arg>{"expCd": "TMATH", "impCompanyId": "CMP_1208_000009", "impCompanyAbbr": "TMV", "countryOfOrigin": "TH", "loadingPort": "LAEM CHABANG", "dischargingPort": "HOJIMIN", "etd": '${current_date}', "vessel": '${vessel_name}', "consignee": "TSAM", "broker": "CMP_1810_000002", "brokerAbbr": "ONE", "userId": "9ed18e70-53bb-4717-a34b-d92ce82afc3e"}</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">${data} = {'expCd': 'TMATH', 'impCompanyId': 'CMP_1208_000009', 'impCompanyAbbr': 'TMV', 'countryOfOrigin': 'TH', 'loadingPort': 'LAEM CHABANG', 'dischargingPort': 'HOJIMIN', 'etd': '2024-03-06', 'vessel': 'AUT...</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${json_data}</var>
+<arg>json.dumps(${data})</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">${json_data} = {"expCd": "TMATH", "impCompanyId": "CMP_1208_000009", "impCompanyAbbr": "TMV", "countryOfOrigin": "TH", "loadingPort": "LAEM CHABANG", "dischargingPort": "HOJIMIN", "etd": "2024-03-06", "vessel": "AUT...</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>JSON Payload: ${json_data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">JSON Payload: {"expCd": "TMATH", "impCompanyId": "CMP_1208_000009", "impCompanyAbbr": "TMV", "countryOfOrigin": "TH", "loadingPort": "LAEM CHABANG", "dischargingPort": "HOJIMIN", "etd": "2024-03-06", "vessel": "AUTOMATETESTDRYSGO", "consignee": "TSAM", "broker": "CMP_1810_000002", "brokerAbbr": "ONE", "userId": "9ed18e70-53bb-4717-a34b-d92ce82afc3e"}</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Headers: ${headers}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240813 17:54:23.638" level="INFO">Headers: {'accept': 'application/json, text/plain, */*', 'accept-language': 'th-TH,th;q=0.9,en;q=0.8', 'content-type': 'application/json', 'origin': 'https://pgn-dev.toyota.co.th', 'referer': 'https://pgn-dev.toyota.co.th/', 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'}</msg>
+<status status="PASS" starttime="20240813 17:54:23.638" endtime="20240813 17:54:23.638"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>URL: ${api_url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240813 17:54:23.639" level="INFO">URL: https://pgn-api-dev.toyota.co.th/web-api-invoice/shipping-information-maintenance/insert-header</msg>
+<status status="PASS" starttime="20240813 17:54:23.639" endtime="20240813 17:54:23.639"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${api_url}</arg>
+<arg>data=${json_data}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20240813 17:54:23.876" level="INFO">POST Request : url=https://pgn-api-dev.toyota.co.th/web-api-invoice/shipping-information-maintenance/insert-header 
+ path_url=/web-api-invoice/shipping-information-maintenance/insert-header 
+ headers={'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json, text/plain, */*', 'Connection': 'keep-alive', 'accept-language': 'th-TH,th;q=0.9,en;q=0.8', 'content-type': 'application/json', 'origin': 'https://pgn-dev.toyota.co.th', 'referer': 'https://pgn-dev.toyota.co.th/', 'Content-Length': '338'} 
+ body={"expCd": "TMATH", "impCompanyId": "CMP_1208_000009", "impCompanyAbbr": "TMV", "countryOfOrigin": "TH", "loadingPort": "LAEM CHABANG", "dischargingPort": "HOJIMIN", "etd": "2024-03-06", "vessel": "AUTOMATETESTDRYSGO", "consignee": "TSAM", "broker": "CMP_1810_000002", "brokerAbbr": "ONE", "userId": "9ed18e70-53bb-4717-a34b-d92ce82afc3e"} 
+ </msg>
+<msg timestamp="20240813 17:54:23.877" level="INFO">POST Response : url=https://pgn-api-dev.toyota.co.th/web-api-invoice/shipping-information-maintenance/insert-header 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 13 Aug 2024 10:54:23 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'x-amzn-requestid': 'fca64aa0-df2c-4fcb-be64-1fb33fada019', 'x-dns-prefetch-control': 'off', 'referrer-policy': 'no-referrer', 'x-permitted-cross-domain-policies': 'none', 'x-xss-protection': '0', 'access-control-allow-origin': '*', 'strict-transport-security': 'max-age=15552000', 'x-amzn-remapped-content-length': '91', 'x-frame-options': 'SAMEORIGIN', 'content-security-policy': "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests", 'origin-agent-cluster': '?1', 'x-amzn-remapped-connection': 'keep-alive', 'cross-origin-opener-policy': 'same-origin', 'x-download-options': 'noopen', 'x-amz-apigw-id': 'ccY3CHasSQ0Fc9g=', 'vary': 'Accept-Encoding', 'x-content-type-options': 'nosniff', 'etag': 'W/"5b-G3cYwlXGwFTWT5uV5c3r7GccL8g"', 'cross-origin-resource-policy': 'same-origin', 'x-amzn-remapped-date': 'Tue, 13 Aug 2024 10:54:23 GMT', 'x-cache': 'Miss from cloudfront', 'via': '1.1 3a6d09c229b46334ae8150e9562036de.cloudfront.net (CloudFront)', 'x-amz-cf-pop': 'SIN2-C1', 'x-amz-cf-id': 'oBssK86eUNaZRPeXaXYnlfEDQgderl8Y3Q8bzJJPDcIOMw6M98-fdw==', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '8b282ab75b2c4036-SIN', 'Content-Encoding': 'gzip'} 
+ body={"statusCode":200,"result":{"code":"MDN90015AINF","message":"Data is added successfully."}} 
+ </msg>
+<msg timestamp="20240813 17:54:23.877" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240813 17:54:23.639" endtime="20240813 17:54:23.877"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Status Code: ${response.status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240813 17:54:23.878" level="INFO">Status Code: 200</msg>
+<status status="PASS" starttime="20240813 17:54:23.877" endtime="20240813 17:54:23.878"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Content: ${response.content}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240813 17:54:23.879" level="INFO">Response Content: {"statusCode":200,"result":{"code":"MDN90015AINF","message":"Data is added successfully."}}</msg>
+<status status="PASS" starttime="20240813 17:54:23.878" endtime="20240813 17:54:23.879"/>
+</kw>
+<kw name="Should Be Equal As Numbers" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to real numbers.</doc>
+<msg timestamp="20240813 17:54:23.880" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20240813 17:54:23.879" endtime="20240813 17:54:23.880"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${vessel_name}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240813 17:54:23.880" level="INFO">${vessel_name} = AUTOMATETESTDRYSGO</msg>
+<status status="PASS" starttime="20240813 17:54:23.880" endtime="20240813 17:54:23.880"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${current_date}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20240813 17:54:23.880" level="INFO">${current_date} = 2024-03-06</msg>
+<status status="PASS" starttime="20240813 17:54:23.880" endtime="20240813 17:54:23.880"/>
+</kw>
+<status status="PASS" starttime="20240813 17:54:23.637" endtime="20240813 17:54:23.880"/>
+</kw>
+<kw name="Connect To Databse Via SSH" library="db">
+<kw name="Set Variable" library="BuiltIn">
+<var>${connection_string}</var>
+<arg>database='${database_name}', user='${database.username}', password='${database.password}', host='${database.host}', port=${database.port}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240813 17:54:23.880" level="INFO">${connection_string} = database='dev', user='user00', password='Rtv)CwG%&amp;-~Oz%Q).T28Y0N?Iv_n(pi6', host='rds-pgn-dev.cqdbslwlazoc.ap-southeast-1.rds.amazonaws.com', port=3306</msg>
+<status status="PASS" starttime="20240813 17:54:23.880" endtime="20240813 17:54:23.880"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${is_connect}</var>
+<arg>DatabaseLibrary.Connect to database using custom params</arg>
+<arg>${database.database_type}</arg>
+<arg>${connection_string}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<arg>${database.database_type}</arg>
+<arg>${connection_string}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_connect_string`
+(parsed as a list of named arguments).</doc>
+<msg timestamp="20240813 17:54:23.887" level="INFO">Executing : Connect To Database Using Custom Params : pymysql.connect(db_api_2.connect(database='dev', user='user00', password=***, host='rds-pgn-dev.cqdbslwlazoc.ap-southeast-1.rds.amazonaws.com', port=3306))</msg>
+<status status="PASS" starttime="20240813 17:54:23.880" endtime="20240813 17:54:24.281"/>
+</kw>
+<msg timestamp="20240813 17:54:24.281" level="INFO">${is_connect} = True</msg>
+<status status="PASS" starttime="20240813 17:54:23.880" endtime="20240813 17:54:24.282"/>
+</kw>
+<if>
+<branch type="IF" condition="${is_connect} == ${FALSE}">
+<kw name="Close SSH Connection" library="db">
+<status status="NOT RUN" starttime="20240813 17:54:24.283" endtime="20240813 17:54:24.283"/>
+</kw>
+<kw name="Connect To Database Using Custom Params" library="DatabaseLibrary">
+<arg>${database.database_type}</arg>
+<arg>${connection_string}</arg>
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to
+connect to the database using the map string `db_connect_string`
+(parsed as a list of named arguments).</doc>
+<status status="NOT RUN" starttime="20240813 17:54:24.283" endtime="20240813 17:54:24.283"/>
+</kw>
+<status status="NOT RUN" starttime="20240813 17:54:24.282" endtime="20240813 17:54:24.283"/>
+</branch>
+<status status="PASS" starttime="20240813 17:54:24.282" endtime="20240813 17:54:24.283"/>
+</if>
+<status status="PASS" starttime="20240813 17:54:23.880" endtime="20240813 17:54:24.284"/>
+</kw>
+<kw name="Select Column With Condition" library="db">
+<arg>TB_R_SHIPPING_INFO_H</arg>
+<arg>SHIPPING_INFO_H_ID</arg>
+<arg>VESSEL_NAME</arg>
+<arg>${vessel_name}</arg>
+<kw name="Catenate" library="BuiltIn">
+<var>${sql_query}</var>
+<arg>SELECT ${column}</arg>
+<arg>FROM</arg>
+<arg>${table}</arg>
+<arg>WHERE</arg>
+<arg>${column_condition} = '${condition_value}'</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20240813 17:54:24.286" level="INFO">${sql_query} = SELECT SHIPPING_INFO_H_ID FROM TB_R_SHIPPING_INFO_H WHERE VESSEL_NAME = 'AUTOMATETESTDRYSGO'</msg>
+<status status="PASS" starttime="20240813 17:54:24.285" endtime="20240813 17:54:24.286"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<arg>${sql_query}</arg>
+<doc>Executes the ``sqlString`` as a single SQL command.</doc>
+<msg timestamp="20240813 17:54:24.286" level="INFO">Executing : Execute SQL String  |  SELECT SHIPPING_INFO_H_ID FROM TB_R_SHIPPING_INFO_H WHERE VESSEL_NAME = 'AUTOMATETESTDRYSGO'</msg>
+<status status="PASS" starttime="20240813 17:54:24.286" endtime="20240813 17:54:24.408"/>
+</kw>
+<kw name="Execute Sql String" library="DatabaseLibrary">
+<var>${result}</var>
+<arg>${sql_query}</arg>
+<doc>Executes the ``sqlString`` as a single SQL command.</doc>
+<msg timestamp="20240813 17:54:24.409" level="INFO">Executing : Execute SQL String  |  SELECT SHIPPING_INFO_H_ID FROM TB_R_SHIPPING_INFO_H WHERE VESSEL_NAME = 'AUTOMATETESTDRYSGO'</msg>
+<msg timestamp="20240813 17:54:24.681" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20240813 17:54:24.409" endtime="20240813 17:54:24.681"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>The value of ${column} is: ${result[0][0]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240813 17:54:24.687" level="FAIL">Resolving variable '${result[0][0]}' failed: TypeError: 'NoneType' object is not subscriptable</msg>
+<status status="FAIL" starttime="20240813 17:54:24.682" endtime="20240813 17:54:24.687"/>
+</kw>
+<status status="FAIL" starttime="20240813 17:54:24.284" endtime="20240813 17:54:24.688"/>
+</kw>
+<kw name="Disconnect From Database And SSH" library="db">
+<status status="NOT RUN" starttime="20240813 17:54:24.689" endtime="20240813 17:54:24.689"/>
+</kw>
+<tag>testapi</tag>
+<status status="FAIL" starttime="20240813 17:54:23.637" endtime="20240813 17:54:24.689">Resolving variable '${result[0][0]}' failed: TypeError: 'NoneType' object is not subscriptable</status>
+</test>
+<status status="FAIL" starttime="20240813 17:54:23.280" endtime="20240813 17:54:24.691"/>
+</suite>
+<status status="FAIL" starttime="20240813 17:54:23.280" endtime="20240813 17:54:24.693"/>
+</suite>
+<status status="FAIL" starttime="20240813 17:54:23.279" endtime="20240813 17:54:24.695"/>
+</suite>
+<status status="FAIL" starttime="20240813 17:54:23.263" endtime="20240813 17:54:24.696"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">testapi</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Functionality Test">Functionality Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="007 APMC Receive - Sorting">Functionality Test.007 APMC Receive - Sorting</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="001 Apmc Receive With Plan And Sorting">Functionality Test.007 APMC Receive - Sorting.001 Apmc Receive With Plan And Sorting</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="01 Apmc Receive By Interface [Dlv And Rcv Mode]">Functionality Test.007 APMC Receive - Sorting.001 Apmc Receive With Plan And Sorting.01 Apmc Receive By Interface [Dlv And Rcv Mode]</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
