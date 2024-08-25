@@ -1,11 +1,11 @@
 *** Settings ***
 Resource    ../../../../keywords/import.robot
+Test Setup  Common.Login Polygon
+Test Teardown   Close Browser
 
 *** Test Cases ***
-#===================เริ่ม 8.3 ========================#
 003.1 WH3 Delivery / Sort Box WIP1 FG NG LOST /Skip RECEIVE/ R-PACKAGE Box
     #DLV
-    common.Log In
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel.R-PackageDelivery_TMMIN}
@@ -31,11 +31,10 @@ Resource    ../../../../keywords/import.robot
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
     #===========================================#
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    
 
 003.2 WH3 Delivery / Sort RM WIP1 >> WIP2/ Skip RECEIVE / R-PACKAGE R_Module
     #DLV
-    common.Log In
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel.R-PackageDelivery_TMMIN}
@@ -62,11 +61,10 @@ Resource    ../../../../keywords/import.robot
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
     #===========================================#
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    
 
 003.3 WH3 Delivery / Sort RM WIP1 >> FG-SCRAP / Skip RECEIVE / R-PACKAGE R_Module
     #DLV
-    common.Log In
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel.R-PackageDelivery_TMMIN}
@@ -94,28 +92,25 @@ Resource    ../../../../keywords/import.robot
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
     #===========================================#
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    
 
 
-WH3.1 BOX
-    common.Log In
-    1 : DLV (Delivery) - การส่งสินค้าออกจาก APMC ไปยัง TH W/H   ${data_excel.WH3_1_APMC_DELIVERY_3_1[RM+B+RM]} 
-    3.1 : Sort Box WIP1 -> FG/NG/LOST - คัดแยกกล่องจาก WIP1 ไปยังสินค้าสำเร็จรูป (FG), สินค้าเสีย (NG) หรือสูญหาย (LOST)    ${data_excel.WH3_1_TH_CHANGE_3_1[BOX]}
+TC01 WH3.1 BOX
+    1 : DLV (Delivery) - Delivery of goods from APMC to TH W/H   ${data_excel.WH3_1_APMC_DELIVERY_3_1[RM+B+RM]} 
+    3.1 : Sort Box WIP1 -> FG/NG/LOST - Sort boxes from WIP1 to Finished Goods (FG), Damaged Goods (NG) or Lost Goods (LOST)    ${data_excel.WH3_1_TH_CHANGE_3_1[BOX]}
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    
 
-WH3.2 RM
-    common.Log In
-    1 : DLV (Delivery) - การส่งสินค้าออกจาก APMC ไปยัง TH W/H   ${data_excel._WH3_2_APMC_DELIVERY_1_[RM]} 
-    3.2 : Sort RM WIP1 -> WIP2 - คัดแยกวัตถุดิบ (RM) จาก WIP1 ไปยัง WIP2    ${data_excel.WH3_2_TH_CHANGE_3_2[RM]}  
+TC02 WH3.2 RM
+    1 : DLV (Delivery) - Delivery of goods from APMC to TH W/H   ${data_excel._WH3_2_APMC_DELIVERY_1_[RM]} 
+    3.2 : Sort RM WIP1 -> WIP2 - Sort raw materials (RM) from WIP1 to WIP2    ${data_excel.WH3_2_TH_CHANGE_3_2[RM]}  
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    
 
-WH3.3 RM
-    common.Log In
-    1 : DLV (Delivery) - การส่งสินค้าออกจาก APMC ไปยัง TH W/H   ${data_excel.WH3_3_APMC_DELIVERY_1[RM]}  
-    3.3 : Sort RM WIP2 -> FG/SCRAP - คัดแยกวัตถุดิบ (RM) จาก WIP2 ไปยังสินค้าสำเร็จรูป (FG) หรือสินค้าที่ต้องทิ้ง (SCRAP)    ${data_excel.WH3_3_TH_CHANGE_3_3[RM]}
+TC03 WH3.3 RM
+    1 : DLV (Delivery) - Delivery of goods from APMC to TH W/H   ${data_excel.WH3_3_APMC_DELIVERY_1[RM]}  
+    3.3 : Sort RM WIP2 -> FG/SCRAP - Sort raw materials (RM) from WIP2 to finished goods (FG) or scrapped goods (SCRAP)    ${data_excel.WH3_3_TH_CHANGE_3_3[RM]}
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    
     
       

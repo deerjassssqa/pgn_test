@@ -3,7 +3,7 @@ Resource    ../../import.robot
 
 *** Keywords ***
 # APMC
-0 : RCV (Receive) - การรับสินค้าจากภายนอกเข้าสู่ระบบที่ APMC
+0 : RCV (Receive) - Receiving goods from outside into the system at APMC
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -16,7 +16,7 @@ Resource    ../../import.robot
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-1 : DLV (Delivery) - การส่งสินค้าออกจาก APMC ไปยัง TH W/H
+1 : DLV (Delivery) - Delivery of goods from APMC to TH W/H
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -31,7 +31,7 @@ Resource    ../../import.robot
 
 
 # TH W/H (Thailand Warehouse)
-2 : RCV (Receive) - การรับสินค้าจาก APMC เข้ามาในโกดังประเทศไทย
+2 : RCV (Receive) - Receiving goods from APMC into the warehouse in Thailand
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -45,7 +45,7 @@ Resource    ../../import.robot
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
 # กระบวนการจัดการภายในโกดัง
-3.1 : Sort Box WIP1 -> FG/NG/LOST - คัดแยกกล่องจาก WIP1 ไปยังสินค้าสำเร็จรูป (FG), สินค้าเสีย (NG) หรือสูญหาย (LOST)
+3.1 : Sort Box WIP1 -> FG/NG/LOST - Sort boxes from WIP1 to Finished Goods (FG), Damaged Goods (NG) or Lost Goods (LOST)
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -58,7 +58,7 @@ Resource    ../../import.robot
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-3.2 : Sort RM WIP1 -> WIP2 - คัดแยกวัตถุดิบ (RM) จาก WIP1 ไปยัง WIP2
+3.2 : Sort RM WIP1 -> WIP2 - Sort raw materials (RM) from WIP1 to WIP2
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -71,7 +71,7 @@ Resource    ../../import.robot
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-3.3 : Sort RM WIP2 -> FG/SCRAP - คัดแยกวัตถุดิบ (RM) จาก WIP2 ไปยังสินค้าสำเร็จรูป (FG) หรือสินค้าที่ต้องทิ้ง (SCRAP)
+3.3 : Sort RM WIP2 -> FG/SCRAP - Sort raw materials (RM) from WIP2 to finished goods (FG) or scrapped goods (SCRAP)
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -85,7 +85,7 @@ Resource    ../../import.robot
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
 # การส่งสินค้าออก
-4.1 : DLV with PDS - การส่งสินค้าออกจาก TH W/H พร้อมเอกสาร PDS
+4.1 : DLV with PDS - Shipping from TH W/H with PDS documents
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -98,7 +98,7 @@ Resource    ../../import.robot
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-4.2 : DLV with Barcode - การส่งสินค้าออกจาก TH W/H โดยใช้บาร์โค้ด
+4.2 : DLV with Barcode - Exporting goods from TH W/H using barcode
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -111,7 +111,7 @@ Resource    ../../import.robot
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-4.3 : DLV with Barcode - การส่งสินค้าออกจาก TH W/H โดยใช้บาร์โค้ด (การสแกนบาร์โค้ด)
+4.3 : DLV with Barcode - Shipping goods out of TH W/H using barcode (barcode scanning)
     [Arguments]    ${data_excel}    
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -166,8 +166,8 @@ Resource    ../../import.robot
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-8 : DLV (Delivery) - การส่งสินค้าออกจาก TMT Packing
-    [Arguments]    ${data_excel}    
+8 : DLV (Delivery) - Shipping from TMT Packing
+    [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel}
@@ -180,8 +180,8 @@ Resource    ../../import.robot
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
 # Other TH W/H
-9 : RCV (Receive) - การรับสินค้าจากโกดังอื่น ๆ ในประเทศไทย
-    [Arguments]    ${data_excel}    
+9 : RCV (Receive) - Receiving goods from other warehouses in Thailand
+    [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel}
@@ -299,7 +299,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 # TMT/TKM
-1 : DLV (TMT ELB Packing): การส่งสินค้าออกจาก TMT ELB Packing ไปยัง KRW โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ TMT ELB Packing
+1 : DLV (TMT ELB Packing): Shipment is sent from TMT ELB Packing to KRW with scanning point at TMT ELB Packing
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -365,7 +365,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 # TMMIN
-2 : RCV (KRW): การรับสินค้าที่ KRW จาก TMT ELB Packing
+2 : RCV (KRW): Receipt of goods at KRW from TMT ELB Packing
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -379,7 +379,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-3 : DLV (KRW): การส่งสินค้าออกจาก KRW ไปยัง STR โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ KRW
+3 : DLV (KRW): Shipment from KRW to STR with scanning point at KRW
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -393,7 +393,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-4.1 : RCV (STR): การรับสินค้าที่ STR จาก KRW
+4.1 : RCV (STR): Receipt of goods at STR from KRW
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -407,7 +407,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-4.2 : RCV (STR): การรับสินค้าจาก APMC Exporter ไปยัง STR
+4.2 : RCV (STR): Receipt of Goods from APMC Exporter to STR
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -421,7 +421,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-5 : Sort (STR): การคัดแยกสินค้าใน STR หลังจากรับสินค้า
+5 : Sort (STR): Sorting goods in STR after receiving them
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -435,7 +435,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-6.1 : DLV (STR): การส่งสินค้าออกจาก STR ไปยัง APMC Importer โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ STR
+6.1 : DLV (STR): Delivery of goods from STR to APMC Importer with scanning of the delivery point (Scanning point) at STR
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -449,7 +449,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-6.2 : DLV (STR): การส่งสินค้าไปยัง Domestic Part Supplier โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ STR
+6.2 : DLV (STR): Delivery of goods to Domestic Part Supplier with scanning of delivery point (Scanning point) at STR
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -463,7 +463,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-6.3 : DLV (STR): การส่งสินค้าไปยัง TDEM TH WH โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ STR
+6.3 : DLV (STR): Delivery of goods to TDEM TH WH with scanning of the delivery point (Scanning point) at STR
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -477,7 +477,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-7 : RCV (TDEM TH WH): การรับสินค้าที่ TDEM TH WH จาก STR
+7 : RCV (TDEM TH WH): Receipt of goods at TDEM TH WH from STR
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -491,7 +491,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-8 : DLV (KRW): การส่งสินค้าออกจาก KRW ไปยัง STR โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ KRW
+8 : DLV (KRW): Shipment from KRW to STR with scanning point at KRW
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -505,7 +505,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-9 : RCV (STR): การรับสินค้าที่ STR จาก KRW
+9 : RCV (STR): Receipt of goods at STR from KRW
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -520,7 +520,7 @@ Log Monitor State
 
 
 
-10 : DLV (APMC Exporter): การส่งสินค้าออกจาก APMC Exporter ไปยัง STR โดยมีการสแกนจุดส่งสินค้า (Scanning point) ที่ APMC Exporter
+10 : DLV (APMC Exporter): Export of goods from APMC Exporter to STR with scanning point at APMC Exporter
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
@@ -562,7 +562,7 @@ Log Monitor State
     Verify Status Success In Table    สเตตัส
 
 
-13 : RCV (APMC Importer): การรับสินค้าที่ APMC Importer จาก STR
+13 : RCV (APMC Importer): Receipt of goods at APMC Importer from STR
     [Arguments]    ${data_excel}
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen

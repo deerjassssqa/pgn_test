@@ -1,10 +1,10 @@
 *** Settings ***
 Resource    ../../../../keywords/import.robot
-
+Test Setup  Common.Login Polygon
+Test Teardown   Close Browser
 *** Test Cases ***
 WH15 Delivery / DLV with Barcode / R-PACKAGE R_Module
     # 1 DLV
-    common.Log In
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel.R-PackageDelivery_TMMIN}
@@ -17,8 +17,7 @@ WH15 Delivery / DLV with Barcode / R-PACKAGE R_Module
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
 WH15 RM
-    common.Log In
-    3.2 : Sort RM WIP1 -> WIP2 - คัดแยกวัตถุดิบ (RM) จาก WIP1 ไปยัง WIP2    ${data_excel.WH15_TH_CHANGE_3_2[RM]
-    9 : RCV (Receive) - การรับสินค้าจากโกดังอื่น ๆ ในประเทศไทย    ${data_excel.WH15_TH_RECEIVE_9[RM]}
+    3.2 : Sort RM WIP1 -> WIP2 - Sort raw materials (RM) from WIP1 to WIP2    ${data_excel.WH15_TH_CHANGE_3_2[RM]
+    9 : RCV (Receive) - Receiving goods from other warehouses in Thailand    ${data_excel.WH15_TH_RECEIVE_9[RM]}
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    

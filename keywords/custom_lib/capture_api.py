@@ -17,7 +17,7 @@ async def capture_response():
 
     # Navigate to the page and trigger the upload
     await page.goto('https://pgn-dev.toyota.co.th/')
-    # You may need to common.Log In or perform other actions here to reach the upload step
+    # You may need to Common.Login Polygon or perform other actions here to reach the upload step
 
     # Wait for a certain time or until the upload request is captured
     await asyncio.sleep(10)  # Adjust this based on your needs

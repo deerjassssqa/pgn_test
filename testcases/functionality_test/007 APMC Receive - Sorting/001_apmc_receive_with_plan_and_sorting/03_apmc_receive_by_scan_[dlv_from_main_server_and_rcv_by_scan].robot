@@ -4,7 +4,7 @@ Resource    ../../../../keywords/import.robot
 *** Test Cases ***
 TC01 Plant Receive Data Deliver Module and Box
     [Tags]    receieve
-    common.Log In
+
     1.7.11 R-Package Scan Screen - APMC Receive
     #Receive UMWT
     Upload File to PGN API    ${data_text.FQF3DN03_DELIVERYUMWT}
@@ -50,4 +50,4 @@ TC01 Plant Receive Data Deliver Module and Box
     1.6.6 Stock IN OUT Report
     1.4.4.1 Daily Inventory Simulation Batch
     1.6.4 Daily Inventory Management Report
-    [Teardown]    Close Browser
+    

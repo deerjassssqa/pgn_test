@@ -1,10 +1,11 @@
 *** Settings ***
 Resource    ../../../../keywords/import.robot
+Test Setup  Common.Login Polygon
+Test Teardown   Close Browser
 
 *** Test Cases ***
 WH8 Delivery / DLV with Barcode / R-PACKAGE R_Module
     # 1 DLV
-    common.Log In
     Click Menu   Main Server
     Click Menu   Uploading R-Package Receive / Deliver / Update Status Screen
     Upload File And Copy App ID    ${data_excel.R-PackageDelivery_TMMIN}
@@ -16,9 +17,8 @@ WH8 Delivery / DLV with Barcode / R-PACKAGE R_Module
     Switch Window    New
     Verify Status Success In Table    Standard Movement Updating Excel Upload & Validation End successfully
 
-WH8 RM
-    common.Log In
-    2 : RCV (Receive) - การรับสินค้าจาก APMC เข้ามาในโกดังประเทศไทย    ${data_excel.WH8_TH_RECEIVE_2[RM]}
-    4.2 : DLV with Barcode - การส่งสินค้าออกจาก TH W/H โดยใช้บาร์โค้ด    ${data_excel.WH8_TH_DELIVERY_4_2[RM]}
+TC01 WH8 RM
+    2 : RCV (Receive) - Receiving goods from APMC into the warehouse in Thailand    ${data_excel.WH8_TH_RECEIVE_2[RM]}
+    4.2 : DLV with Barcode - Exporting goods from TH W/H using barcode    ${data_excel.WH8_TH_DELIVERY_4_2[RM]}
     1.3.6 R-Package Movement Updating Batch
-    [Teardown]    Close Browser
+    

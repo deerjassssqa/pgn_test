@@ -533,7 +533,40 @@ Common 2.1.4 Excel Download Screen
 
 1.3.4 Standard Movement Updating Excel Upload & Validation Batch
     [Documentation]    Step 1.3.4 Standard Movement Updating Excel Upload & Validation Batch
-    Log    ใช้วิธี ยิง API เพื่อดู DATA เนื่องจากหน้า Web ยังไม่มีเมนูนี้
+    Click Menu    Common
+    Click Menu    Monitoring
+    Click Menu    On Demand Batch Screen
+    Click Myelement    ${DATA_TESTID_PROJECT_CODE}
+    Click Option Dropdown    DN97
+    Click Myelement    xpath=//*[@data-testid='input-batch-name']
+    Click Option Dropdown    Standard Movement Updating Interface Upload & Validation
+    Click Search Button
+    # 4.Click Checkbox 
+    Click Check Box
+    # 5.Click Excute >> ข้อความแสดงว่า Success และมีเลข App Id แสดง
+    Click Myelement  id=btn-execute
+    Click Myelement    id=button-confirm-ok
+    Sleep    3s
+    # รับค่า App ID จาก Alert Message และเก็บไว้ในตัวแปร process_app_id
+    Check Alert Messages and Extract IDs
+    # 6.เลือกเมนู Common >> Monitoring >> Log Monitoring Summary Screen
+    Click Menu    Common
+    Click Menu    Monitoring
+    Click Menu    Log Monitoring Summary Screen
+    # 7.App ID :XXXXXX >>Click Search
+    Click Myelement  xpath=//div[@data-testid='select_moduleId']
+    Click Option Dropdown    DN97
+    Click Myelement  xpath=//div[@data-testid='select_function']
+    Click Option Dropdown    BDN97070
+    Click Myelement    id=select_status
+    Click Option Dropdown    I
+    Input Text    id=input_appId    ${process_app_id}
+    Sleep    3s
+    Click Myelement    id=btn_search
+    Sleep    2s
+    Click Myelement  xpath=//div[@data-field='status']//span[text()='Success']
+    Switch Window    New
+    Verify Table Success    Standard Movement Updating Interface Upload & Validation End successfully
 
 1.7.7 Plant Server Receiving interface Upload & Validation Batch
     Click Menu    Main Server

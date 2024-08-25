@@ -2,7 +2,7 @@
 Resource    import.robot
 
 *** Keywords ***
-Log In
+Login Polygon
     Open Browser    ${common.url}    chrome
     Maximize Browser Window
 

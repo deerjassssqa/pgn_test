@@ -11,6 +11,9 @@ Library    Collections
 Library    BuiltIn
 Library    String
 Library    custom_lib/capture_api.py
+Library    custom_lib/upload_file.py
+Library    custom_lib/shipping-information-maintenance.py
+Library    custom_lib/read_interface_file_inventory.py
 Library    DatabaseLibrary
 Library    SSHLibrary
 
@@ -25,4 +28,5 @@ Resource    api/common_api.robot
 Resource    ../keywords/polygon/pages/apmc_receive_sorting_page.robot
 Resource    ../keywords/polygon/features/apmc_receive_sorting_feature.robot
 Resource    ../keywords/polygon/features/scan_pattern_stock_movement_feature.robot
+Resource    ../keywords/polygon/features/discrepancy_feature.robot
 Resource    ../keywords/database/db.robot

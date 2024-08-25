@@ -32,7 +32,7 @@ ${scan-status-change-r-box.header}     {"accept": "application/json, text/plain,
 Upload File to PGN API
     [Documentation]  Test to upload file to master-upload endpoint using Python script
     [Arguments]    ${file_upload}
-    ${result}=  Run Process  python3  /Users/deer/polygon-robot-test/keywords/custom_lib/upload_file.py  ${file_upload}  ${FUNCTION_NAME}  ${USER_ID}  ${DATA_OWNER}  ${CD}  ${BASE_URL}  stdout=TRUE  stderr=TRUE
+    ${result}=  Run Process  python3  ${CURDIR}/../custom_lib/upload_file.py  ${file_upload}  ${FUNCTION_NAME}  ${USER_ID}  ${DATA_OWNER}  ${CD}  ${BASE_URL}  stdout=TRUE  stderr=TRUE
     Log  ${result.stdout}
     Log  ${result.stderr}
     Should Contain  ${result.stdout}  201
@@ -50,7 +50,7 @@ Upload File to PGN API
 Upload File And Check API Response APP ID
     [Documentation]  Test to upload file to master-upload endpoint using Python script
     [Arguments]    ${file_upload}
-    ${result}=  Run Process  python3  /Users/deer/polygon-robot-test/keywords/custom_lib/upload_file.py  ${file_upload}  ${FUNCTION_NAME}  ${USER_ID}  ${DATA_OWNER}  ${CD}  ${BASE_URL}  stdout=TRUE  stderr=TRUE
+    ${result}=  Run Process  python3  ${CURDIR}/../custom_lib/upload_file.py  ${file_upload}  ${FUNCTION_NAME}  ${USER_ID}  ${DATA_OWNER}  ${CD}  ${BASE_URL}  stdout=TRUE  stderr=TRUE
     Log  ${result.stdout}
     Log  ${result.stderr}
     Should Contain  ${result.stdout}  201
@@ -77,7 +77,7 @@ Capture API Response Test
 Upload File Uploading R-Package Receive And Check API Response APP ID
     [Documentation]  Test to upload file to master-upload endpoint using Python script
     [Arguments]    ${file_upload}
-    ${result}=  Run Process  python3  /Users/deer/polygon-robot-test/keywords/custom_lib/upload_file.py  ${file_upload}  ${FUNCTION_NAME}  ${USER_ID}  ${DATA_OWNER}  ${CD}  https://pgn-api-dev.toyota.co.th/web-api-handheld-application/main-server-screen/upload-update-status-rpack  stdout=TRUE  stderr=TRUE
+    ${result}=  Run Process  python3  ${CURDIR}/../custom_lib/upload_file.py  ${file_upload}  ${FUNCTION_NAME}  ${USER_ID}  ${DATA_OWNER}  ${CD}  https://pgn-api-dev.toyota.co.th/web-api-handheld-application/main-server-screen/upload-update-status-rpack  stdout=TRUE  stderr=TRUE
     Log  ${result.stdout}
     Log  ${result.stderr}
     Should Contain  ${result.stdout}  201
@@ -264,3 +264,20 @@ Scan Status Change R-Box
     Log    Response Content: ${response.content}
     Should Be Equal As Numbers    ${response.status_code}    200
 
+Inventory Upload Interface And Check API Response APP ID
+    [Documentation]  Test to upload file to master-upload endpoint using Python script
+    [Arguments]    ${file_upload}    ${function_id}
+    ${result}=  Run Process  python3  ${CURDIR}/../custom_lib/read_interface_file_inventory.py  ${file_upload}  ${function_id}  https://pgn-api-dev.toyota.co.th/web-api-inventory-management/inventory-upload-interface  stdout=TRUE  stderr=TRUE
+    Log  ${result.stdout}
+    Log  ${result.stderr}
+    Should Contain  ${result.stdout}  201
+    ${lines}=  Split String  ${result.stdout}  \n
+    ${response}=  Get From List  ${lines}  1
+    Log  ${response}
+    ${json_response}=  Evaluate  json.loads(${response})  modules=json
+    ${app_id}=  Get From Dictionary  ${json_response}  appId
+    ${message}=  Get From Dictionary  ${json_response}  message
+    Log  App ID: ${app_id}
+    Log  Message: ${message}
+    Set Global Variable    ${app_id}
+    Set Global Variable    ${message}

@@ -3,7 +3,7 @@ Resource    ../../../../keywords/import.robot
 
 *** Test Cases ***
 TC01 Main Server Recieving : Receive Plant Data From Scan Sorting Without Scanned RCV For M, B
-    common.Log In
+
     1.7.10 Main Server Receiving Interface Upload & Validation Batch
     Common 2.1.4 Excel Download Screen    VW_STD_MOVEMENT
     1.3.6 R-Package Movement Updating Batch
@@ -21,10 +21,10 @@ TC01 Main Server Recieving : Receive Plant Data From Scan Sorting Without Scanne
     1.6.6 Stock IN OUT Report
     1.4.4.1 Daily Inventory Simulation Batch
     1.6.4 Daily Inventory Management Report
-    [Teardown]    Close Browser
+    
 
 TC02 Main Server Recieving : Receive Plant Data From Scan Sorting With Scanned RCV For M, B
-    common.Log In
+
     1.7.10 Main Server Receiving Interface Upload & Validation Batch
     Common 2.1.4 Excel Download Screen    VW_STD_MOVEMENT
     1.3.6 R-Package Movement Updating Batch
@@ -42,4 +42,4 @@ TC02 Main Server Recieving : Receive Plant Data From Scan Sorting With Scanned R
     1.6.6 Stock IN OUT Report
     1.4.4.1 Daily Inventory Simulation Batch
     1.6.4 Daily Inventory Management Report
-    [Teardown]    Close Browser
+    
