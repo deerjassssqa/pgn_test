@@ -246,3 +246,12 @@ ${data_excel.I25__STR_RCV_9[RM+B+RM]}    ${CURDIR}I25__STR_RCV_9[RM+B+RM].xlsx
 ${data_excel.I25__TMATH_RCV_7[RM+B+RM]}    ${CURDIR}I25__TMATH_RCV_7[RM+B+RM].xlsx
 ${data_excel.I26__STR_RCV_9[RM]}    ${CURDIR}I26__STR_RCV_9[RM].xlsx
 ${data_excel.I26_APMC_RCV_13[RM]}    ${CURDIR}I26_APMC_RCV_13[RM].xlsx
+
+
+${data_excel.DLV_ROEM_722B[RM+B+RM]}    ${CURDIR}DLV_ROEM_722B[RM+B+RM].txt
+${data_excel.RCV_KUOCL_MULTI_TYPE+ONE_TYPE}    ${CURDIR}RCV_KUOCL_MULTI_TYPE+ONE_TYPE.xlsx
+${data_excel.ROME_722C_DLV_KUOZUI}    ${CURDIR}ROME_722C_DLV_KUOZUI.txt
+${data_excel.RCV_712CKN[RM+B+RM]}    ${CURDIR}RCV_712CKN[RM+B+RM].xlsx
+${data_excel.}    ${CURDIR}
+${data_excel.}    ${CURDIR}
+
